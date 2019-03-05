@@ -1,0 +1,61 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "concurrently -k -n parcel,ts,jest -c bgYellow.black,bgBlue.black,bgGreen.black \"npm:parcel\" \"npm:typescript\" \"npm:jest\"",
+    "test": "jest && start-server-and-test parcel 1234 cypress-headless",
+    "build": "tsc --noEmit && parcel build ./src/index.html",
+    "typescript": "tsc --watch --noEmit --preserveWatchOutput --pretty",
+    "parcel": "parcel ./src/index.html --no-autoinstall",
+    "jest": "CI=true jest --watch",
+    "cypress": "cypress open",
+    "cypress-headless": "cypress run"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "<rootDir>/(src|test)/**/*.spec.ts?(x)"
+    ],
+    "globals": {
+      "ts-jest": {
+        "isolatedModules": true
+      }
+    },
+    "watchPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/.cache/",
+      "<rootDir>/dist/",
+      "<rootDir>/cypress/"
+    ]
+  },
+  "dependencies": {
+    "@blueprintjs/core": "^3.14.0",
+    "@cypress/webpack-preprocessor": "^4.0.3",
+    "@types/jest": "^24.0.9",
+    "@types/react": "^16.8.6",
+    "@types/react-dom": "^16.8.2",
+    "axios": "^0.18.0",
+    "concurrently": "^4.1.0",
+    "cypress": "^3.1.5",
+    "cypress-testing-library": "^2.3.6",
+    "formik": "^1.5.1",
+    "jest": "^24.1.0",
+    "localforage": "^1.7.3",
+    "mobx": "^5.9.0",
+    "mobx-react-lite": "^1.1.0",
+    "normalize.css": "^8.0.1",
+    "parcel-bundler": "^1.11.0",
+    "prettier": "^1.16.4",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-use": "^5.5.5",
+    "runtypes": "^3.1.2",
+    "start-server-and-test": "^1.7.11",
+    "ts-jest": "^24.0.0",
+    "ts-loader": "^5.3.3",
+    "tslib": "^1.9.3",
+    "typescript": "^3.3.3333",
+    "typestyle": "^2.0.1",
+    "webpack": "^4.29.6"
+  }
+}
