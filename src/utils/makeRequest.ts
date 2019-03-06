@@ -42,12 +42,12 @@ export async function makeRequest<Data>(
 
 function getUrl(url: string) {
   // CORS appears to be improperty configured on the censys api
-  // so we include this prefix to circumvent the issue.
+  // so I included this prefix to circumvent the issue.
   // The correct "Access-Control-Allow-Origin: *" header is set
   // but the OPTIONS pre-flight request is responding with
-  // a 403 unauthorized. Browsers don't send headers with OPTIONS
-  // requests so when the server sees an OPTIONS request it shouldn't
-  // attempt to authenticate but rather always return a 200 status
+  // a 403 unauthorized. Browsers don't send authorization headers with
+  // OPTIONS requests so when the server sees an OPTIONS request it
+  // shouldn't attempt to authenticate but rather always return a 200 status
   // code.
   const prefix = "https://cors-anywhere.herokuapp.com/";
 
