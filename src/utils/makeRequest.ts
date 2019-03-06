@@ -41,7 +41,7 @@ export async function makeRequest<Data>(
 }
 
 function getUrl(url: string) {
-  // CORS appears to be improperty configured on the censys api
+  // CORS appears to be improperly configured on the censys api
   // so I included this prefix to circumvent the issue.
   // The correct "Access-Control-Allow-Origin: *" header is set
   // but the OPTIONS pre-flight request is responding with
